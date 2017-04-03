@@ -89,6 +89,7 @@ public class SudokuCell extends Observable implements Observer {
     /**
      * Observe and remove the entry set in the observable
      */
+    @Override
     public void update(Observable o, Object arg) {
         this.values.remove(arg);
 
