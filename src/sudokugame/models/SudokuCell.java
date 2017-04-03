@@ -27,6 +27,8 @@ public class SudokuCell extends Observable implements Observer {
      */
     private int col;
 
+    private boolean locked;
+
     /**
      *
      */
@@ -41,8 +43,6 @@ public class SudokuCell extends Observable implements Observer {
 
     /**
      * Constructor. Initializes the Value of this Field and locks it
-     *
-     * @param value
      */
     public SudokuCell(int row, int col) {
         this.row = row;

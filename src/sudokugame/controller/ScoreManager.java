@@ -16,12 +16,26 @@ public class ScoreManager {
 
     /**
      *
+     */
+    private DatabaseConnection connector;
+
+    /**
+     *
+     * @param connector
+     */
+    public ScoreManager(DatabaseConnection connector){
+        this.connector = connector;
+    }
+
+    /**
+     *
      * @param name
      * @param time
      */
     public void submitScore(String name, long time){
 
     }
+
 
     public void getAllHighScores(){
 

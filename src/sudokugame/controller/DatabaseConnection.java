@@ -36,10 +36,10 @@ public class DatabaseConnection {
     }
 
     /**
-     *
      * @throws SQLException
      */
     public void connect() throws SQLException {
+
         if (this.conn == null) {
             this.conn = DriverManager.getConnection(
                     link, this.config.getUser(), this.config.getPassword()
@@ -48,10 +48,9 @@ public class DatabaseConnection {
     }
 
     /**
-     *
      * @return
      */
-    public Connection getConnection() {
+    public Connection getConnection() throws NullPointerException {
         return this.conn;
     }
 

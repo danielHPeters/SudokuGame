@@ -27,7 +27,9 @@ public class Sudoku {
         }
     }
 
-    // set known values
+    /**
+     * set known values
+     */
     public void setup(int[][] puzzle) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -38,6 +40,11 @@ public class Sudoku {
         }
     }
 
+    /**
+     * @param i
+     * @param j
+     * @return
+     */
     public int getCellValue(int i, int j) {
         return cells[i][j].getValue();
     }
