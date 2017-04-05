@@ -8,49 +8,10 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class SudokuGui extends Application {
-
-    /**
-     *
-     */
-    private MenuBar mBar;
-
-    /**
-     *
-     */
-    private Menu file;
-
-    /**
-     *
-     */
-    private Menu scores;
-
-    /**
-     *
-     */
-    private Menu options;
-
-    /**
-     *
-     */
-    private MenuItem save;
-
-    /**
-     *
-     */
-    private MenuItem load;
-
-    /**
-     *
-     */
-    private MenuItem exit;
-
-    /**
-     *
-     */
-    private MenuItem showAllScores;
 
     /**
      *
@@ -64,10 +25,22 @@ public class SudokuGui extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+        initScoresDisplay(primaryStage);
+    }
+    
+    private void initScoresDisplay(Stage parentStage){
+        this.scoresDisplay = new Stage();
+        this.scoresDisplay.setTitle("Scores");
+        this.scoresDisplay.initOwner(parentStage);
+        this.scoresDisplay.initModality(Modality.WINDOW_MODAL);
+    }
+    
+    public Stage getScoresDisplay(){
+        return this.scoresDisplay;
     }
 
 

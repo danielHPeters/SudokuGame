@@ -14,9 +14,9 @@
             <menus>
                 <Menu text="File">
                     <items>
-                        <MenuItem text="Save Game" />
-                        <MenuItem text="Load Game" />
-                        <MenuItem text="Exit" />
+                        <MenuItem text="Save Game" onAction="#handleMenuEvents"/>
+                        <MenuItem text="Load Game" onAction="#handleMenuEvents"/>
+                        <MenuItem fx:id="exitButton" text="Exit" onAction="#handleMenuEvents"/>
                     </items>
                 </Menu>
                 
