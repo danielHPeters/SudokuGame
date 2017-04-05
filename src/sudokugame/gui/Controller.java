@@ -1,4 +1,4 @@
-package sudokugame;
+package sudokugame.gui;
 
 public class Controller {
 }
