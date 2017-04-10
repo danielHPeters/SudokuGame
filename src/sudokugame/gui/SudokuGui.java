@@ -27,7 +27,7 @@ public class SudokuGui extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 540, 350));
         primaryStage.show();
         initScoresDisplay(primaryStage);
     }
