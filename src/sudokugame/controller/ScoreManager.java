@@ -4,7 +4,9 @@ import sudokugame.models.Score;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,25 +35,47 @@ public class ScoreManager {
      * @param name
      * @param time
      */
-    public void submitScore(String name, long time) throws SQLException {
+    public void submitScore(String name, long time) {
         this.scores.add(new Score(name, time));
+    }
 
+    /**
+     * @param userName
+     * @param usedTime
+     * @throws SQLException
+     */
+    public void submitToDb(String userName, long usedTime) throws SQLException {
         this.connector.connect();
         Connection conn = this.connector.getConnection();
 
-        String sql = "INSERT INTO scores (name, time) VALUES(?, ?)";
+        String sql = "INSERT INTO scores (userName, usedTime) VALUES(?, ?)";
 
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, name);
-        statement.setLong(2, time);
+        statement.setString(1, userName);
+        statement.setLong(2, usedTime);
 
         System.out.println(statement.toString());
         statement.executeUpdate();
-
     }
 
 
-    public void getAllHighScores() {
+    /**
+     * Load scoresList from Db
+     *
+     * @throws SQLException
+     */
+    public void loadScoresFromDb() throws SQLException {
+        this.connector.connect();
+        this.scores = new ArrayList<>();
+        Connection conn = this.connector.getConnection();
+        String sql = "SELECT userName, usedTime FROM scores ORDER BY usedTime";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        ResultSet results = statement.executeQuery();
+
+        while (results.next()) {
+            this.scores.add(new Score(results.getString("userName"), results.getLong("usedTime")));
+        }
+
 
     }
 
