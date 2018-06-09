@@ -1,2 +1,2 @@
 # sudoku-java
-Sudoku in Java for a school project.
+Simple sudoku written in Java.
